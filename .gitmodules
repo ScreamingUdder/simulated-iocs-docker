@@ -1,0 +1,6 @@
+[submodule "EPICS-DeviceEmulator"]
+	path = EPICS-DeviceEmulator
+	url = git@github.com:ISISComputingGroup/EPICS-DeviceEmulator.git
+[submodule "EPICS-ioc"]
+	path = EPICS-ioc
+	url = git@github.com:ISISComputingGroup/EPICS-ioc.git
