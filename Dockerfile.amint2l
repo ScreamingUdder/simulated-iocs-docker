@@ -1,0 +1,23 @@
+FROM dmscid/lewis-depends:latest
+
+COPY requirements.txt /
+
+# Install any missing PIP requirements, clear PIP cache, and delete all compiled Python objects
+RUN pip install -r /requirements.txt && \
+    rm -rf /root/.cache/pip/* && \
+    find \( -name '*.pyc' -o -name '*.pyo' \) -exec rm -rf '{}' +
+
+# Add the particular simulated device python scripts
+
+
+# Add the particular ioc and built it
+RUN apk update
+RUN apk add --no-cache make automake autoconf gcc libgcc
+
+COPY EPICS-ioc/AMINT2L /AMINT2L-ioc
+
+RUN echo $TOP
+RUN echo $EPICS_BASE
+
+RUN cd /AMINT2L-ioc && \
+    make
